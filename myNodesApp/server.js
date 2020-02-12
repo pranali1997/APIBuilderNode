@@ -22,15 +22,18 @@ mongoose.connect(dbConfig.url,{
     process.exit();
 });
 
-app.get('/HOME', (req, res) => {
+//define a simple route
+app.get('/', (req, res) => {
     let message = "welcome to Easynotes application" +
         "take notes quikly. organise and keep track of it"
     res.json({ "message": message });
 
 });
 
+//setting notes routes to express app
+require('./app/routes/notes.routes.js')(app);
 
+//listen for request
 app.listen(3000, () => {
     console.log("server is listening on port 3000");
-
 });
