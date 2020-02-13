@@ -24,8 +24,8 @@ mongoose.connect(dbConfig.url,{
 
 //define a simple route
 app.get('/', (req, res) => {
-    let message = "welcome to Easynotes application" +
-        "take notes quikly. organise and keep track of it"
+    let message = "welcome to Easy notes application" +
+        "take notes quickly. organize and keep track of it"
     res.json({ "message": message });
 
 });

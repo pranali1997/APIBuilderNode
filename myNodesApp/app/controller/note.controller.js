@@ -21,7 +21,7 @@ exports.create = (req, res) => {
             res.send(data);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "some Error occured while creating node"
+                message: err.message || "some Error occurred while creating node"
             });
         });
 }
@@ -32,7 +32,7 @@ exports.findAll = (req, res) => {
             res.send(note);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "Some Error Occured while retriving notes"
+                message: err.message || "Some Error Occurred while retrieving notes"
             });
         });
 }
@@ -54,11 +54,22 @@ exports.findOne = (req, res) => {
                     message: "Note not found with id" + req.params.noteId
                 });
             }
-
             return res.status(500).send({
-                message: "Error retriving with node Id" + req.params.noteId
+                message: "Error retrieving with node Id" + req.params.noteId
             });
         });
+}
+
+exports.update = (req,res) => {
+    Note.updateOne({"id":req.params.noteId},{$set:{"title":req.body.title} }).
+    then(data => {  
+        res.send(data);
+    }).catch(err => {
+        res.status(404).send({
+            message : "Error occurred while updating id" + req.params.noteId
+        })
+    })
+
 }
 
 exports.delete = (req, res) => {

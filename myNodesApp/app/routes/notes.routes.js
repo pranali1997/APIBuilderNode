@@ -8,8 +8,8 @@ module.exports = (app) => {
 
     app.get('/notes/:noteId',notes.findOne);
 
-   // app.get('/notes',notes.update);
+    app.put('/notes/:nodeId',notes.update);
 
-    app.delete('/notes',notes.delete);
+    app.delete('/notes/:noteId',notes.delete);
 
 }
